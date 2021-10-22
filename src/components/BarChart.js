@@ -11,9 +11,12 @@ export class BarChart extends React.Component {
       water: 2000,
     };
   }
-/* INFORMAÇÕES INPORTANTE
-Colocar tudo em %, 
-tentar usar o grafico em silhueta humana (css hard skills)
+  /* INFORMAÇÕES INPORTANTE
+- Colocar tudo em %, 
+- tentar usar o grafico em silhueta humana (css hard skills)
+- Dados nessa sequencia:
+ Valor Energético, Carboidratos, Açúcares, Proteínas, Gordura total, Gordura saturada, Fibras, Sódio e Vitamina C.
+
 */
   render() {
     return (
