@@ -11,8 +11,10 @@ export class BarChart extends React.Component {
       water: 2000,
     };
   }
-
-
+/* INFORMAÇÕES INPORTANTE
+Colocar tudo em %, 
+tentar usar o grafico em silhueta humana (css hard skills)
+*/
   render() {
     return (
       <div>
