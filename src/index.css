@@ -1,13 +1,113 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #d6d1f3;
+    }
+
+main {
+    padding-top: 25px;
+    color: azure;
+    height: 100%;
+    text-align: center;
+}
+
+.entry-form {
+    color: black;
+    background-color: azure;
+    width: 60%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: outset;
+    border-color: rgb(156, 0, 218);
+    min-width: 400px;
+    max-width: 700px;
+    padding-top: 15px;
+    padding-bottom: 50px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+.measurement-choice input {
+    margin-right: 8px;
+}
+
+.gender-choice {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 10px;
+}
+
+.gender-choice select {
+    font-size: 12px;
+}
+
+label {
+    padding-right: 10px;
+}
+
+.form-inputs {
+    padding-top: 10px;
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 10px;
+}
+
+.activity-level {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 10px;
+}
+
+.activity-level select {
+    font-size: 12px;
+}
+
+#calculate-btn {
+    background-color: #6f5be3;
+    border-color: #6f5be3;
+    ;
+}
+
+#calculate-btn:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.calorie-result p {
+    display: contents;
+    padding-right: 5px;
+    font-size: 20px;
+}
+
+small a {
+    color: azure;
+}
+
+small a:hover {
+    color: lightslategrey;
+}
+
+footer {
+    height: 20px;
+    margin-top: -50px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
