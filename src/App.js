@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import Navbar from "./components/NavBar";
 import "./App.css";
 import { EntryForm } from "./components/Form/EntryForm";
+import Chartpercent from "./components/ChartPercent";
+import  Search  from "./components/Search";
 
 const ParseCSV = (text) => {
   const result = {
@@ -15,12 +17,12 @@ const ParseCSV = (text) => {
   content.forEach((item) => {
     result.data.push(item.split(","));
   });
-  console.log(result);
+  
 };
 
 export default function App() {
   useEffect(() => {
-    fetch('./teste.csv')
+    fetch('./nutrientes.csv')
       .then((r) => r.text())
       .then((text) => {
         ParseCSV(text);
@@ -30,6 +32,8 @@ export default function App() {
     <div>
       <Navbar />
       <EntryForm />
+      <Search />
+      <Chartpercent />
       <div className="App"></div>
     </div>
   );
