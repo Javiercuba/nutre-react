@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import _ from "lodash";
-import { Search, Label } from "semantic-ui-react";
+import { Search, Label, Table, Grid, Header, Segment } from "semantic-ui-react";
 
 var result = [];
-
+var teste = [];
 const ParseCSV = (csv) => {
   const lines = csv.split("\n");
   var headers = lines[0].split(",");
@@ -40,7 +40,10 @@ function exampleReducer(state, action) {
       throw new Error();
   }
 }
+
 const resultRenderer = ({ Nome }) => <Label content={Nome} />;
+console.log(result);
+
 
 export default function SearchExampleStandard() {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState);
@@ -54,7 +57,9 @@ export default function SearchExampleStandard() {
       });
   }, []);
 
+  
   const timeoutRef = React.useRef();
+
   const handleSearchChange = React.useCallback((e, data) => {
     clearTimeout(timeoutRef.current);
     dispatch({ type: "START_SEARCH", query: data.value });
@@ -67,34 +72,59 @@ export default function SearchExampleStandard() {
 
       const re = new RegExp(_.escapeRegExp(data.value), "i");
       const isMatch = (result) => re.test(result.Nome);
-
+      
       dispatch({
         type: "FINISH_SEARCH",
         results: _.filter(result, isMatch),
       });
     }, 300);
   }, []);
+
   React.useEffect(() => {
     return () => {
       clearTimeout(timeoutRef.current);
     };
   }, []);
 
+
   return (
-    <div className="search">
-          <Search
-            loading={loading}
-            onResultSelect={(e, data) =>
-              dispatch({
-                type: "UPDATE_SELECTION",
-                selection: data.result.Nome,
-              })
-            }
-            onSearchChange={handleSearchChange}
-            resultRenderer={resultRenderer}
-            results={results}
-            value={value}
-          />
+    <div className="form-search">
+      Itens da sua refeição
+      <div className="search-input">
+        <Search
+          loading={loading}
+          onResultSelect={(e, data) =>
+            dispatch({
+              type: "UPDATE_SELECTION",
+              selection: data.result.Nome,
+            })
+          }
+          onSearchChange={handleSearchChange}
+          resultRenderer={resultRenderer}
+          results={results}
+          value={value}
+        />
+      </div>
+      <Table fixed>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Nome</Table.HeaderCell>
+            <Table.HeaderCell>Medida caseira</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>banana</Table.Cell>
+            <Table.Cell>unidade</Table.Cell>
+          </Table.Row>
+
+          <Table.Row>
+            <Table.Cell>Jamie</Table.Cell>
+            <Table.Cell>Approved</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
     </div>
   );
 }

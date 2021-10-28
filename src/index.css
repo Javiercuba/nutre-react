@@ -99,7 +99,21 @@ label {
     justify-content: center;
 }
 
-.search {
+.form-search {
+    background-color: aliceblue;
+    margin: 30px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: #218d33;
+    text-align: center;
+    justify-content: center;
+    border-radius: 20px;
+    border-style: outset;
+    border-color: rgb(255, 255, 255);
+    padding: 25px;
+}
+
+.search-input {
     align-items: center;
     margin-top: 10px;
     justify-content: center;
