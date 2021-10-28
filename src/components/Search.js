@@ -2,31 +2,23 @@ import React, { useEffect } from "react";
 import _ from "lodash";
 import { Search, Grid, Header, Segment, Label } from "semantic-ui-react";
 
+var result = [];
 
- 
-const tasks = [
-  {
-    taskId: 1,
-    taskName: "Clean the bathroom",
-    taskStatus: "Complete",
-  },
-  {
-    taskId: 2,
-    taskName: "Learn filtering data in React",
-    taskStatus: "To do",
-  },
-  {
-    taskId: 3,
-    taskName: "Fix the bug on React project",
-    taskStatus: "To do",
-  },
-  {
-    taskId: 4,
-    taskName: "Fix the car",
-    taskStatus: "Complete",
-  },
-];
-console.log(tasks);
+const ParseCSV = (csv) => {
+  const lines = csv.split("\n");
+  var headers = lines[0].split(",");
+  for (var i = 1; i < lines.length; i++) {
+    var obj = {};
+    var currentline = lines[i].split(",");
+
+    for (var j = 0; j < headers.length; j++) {
+      obj[headers[j]] = currentline[j];
+    }
+    result.push(obj);
+  }
+  return JSON.stringify(result);
+};
+
 const initialState = {
   loading: false,
   results: [],
@@ -48,12 +40,19 @@ function exampleReducer(state, action) {
       throw new Error();
   }
 }
-const resultRenderer = ({ taskName }) => <Label content={taskName} />;
+const resultRenderer = ({ Nome }) => <Label content={Nome} />;
 
 export default function SearchExampleStandard() {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState);
   const { loading, results, value } = state;
-  
+
+  useEffect(() => {
+    fetch("./nutrientes.csv")
+      .then((r) => r.text())
+      .then((text) => {
+        ParseCSV(text);
+      });
+  }, []);
 
   const timeoutRef = React.useRef();
   const handleSearchChange = React.useCallback((e, data) => {
@@ -67,11 +66,11 @@ export default function SearchExampleStandard() {
       }
 
       const re = new RegExp(_.escapeRegExp(data.value), "i");
-      const isMatch = (result) => re.test(result.taskName);
+      const isMatch = (result) => re.test(result.Nome);
 
       dispatch({
         type: "FINISH_SEARCH",
-        results: _.filter(tasks, isMatch),
+        results: _.filter(result, isMatch),
       });
     }, 300);
   }, []);
@@ -90,7 +89,7 @@ export default function SearchExampleStandard() {
             onResultSelect={(e, data) =>
               dispatch({
                 type: "UPDATE_SELECTION",
-                selection: data.result.taskName,
+                selection: data.result.Nome,
               })
             }
             onSearchChange={handleSearchChange}
@@ -108,7 +107,7 @@ export default function SearchExampleStandard() {
             </pre>
             <Header>Options</Header>
             <pre style={{ overflowX: "auto" }}>
-              {JSON.stringify(tasks, null, 2)}
+              {JSON.stringify(result, null, 2)}
             </pre>
           </Segment>
         </Grid.Column>
