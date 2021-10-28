@@ -3,6 +3,8 @@ import { MetricForm } from "./MetricForm";
 import { ActivityLevel } from "../../helpers/ActivityLevel";
 import { Result } from "../../helpers/Result";
 import { BarChart } from "../BarChart";
+import { Form, Button } from "semantic-ui-react";
+import Search from "../Search";
 
 export class EntryForm extends React.PureComponent {
   constructor(props) {
@@ -79,6 +81,7 @@ export class EntryForm extends React.PureComponent {
 
     // check that any of the fields arent empty
     for (i in fields) {
+      console.log(fields[i]);
       if (fields[i].length === 0) {
         return false;
       }
@@ -104,6 +107,7 @@ export class EntryForm extends React.PureComponent {
         showResult: true,
         resultForm: (
           <BarChart
+            //TODO mudar esse grafico
             energy={this.calculateCalories}
             weight={this.state.weight}
           />
@@ -170,48 +174,47 @@ export class EntryForm extends React.PureComponent {
 
   render() {
     return (
-      <div>
-        <div class="entry-form">
-          <form>
-            <p>Selecione suas medidas</p>
+      <Form className="form-test">
+        <div className="entry-form">
+          <p>Selecione suas medidas</p>
 
-            <div class="gender-choice">
-              <label for="gender">Genero</label>
-              <select
-                name="gender"
-                id="gender"
-                class="browser-default custom-select"
-                onChange={this.changeGender}
-              >
-                <option value="" disabled selected>
-                  selecione
-                </option>
-                <option value="male">Masculino</option>
-                <option value="female">Feminino</option>
-              </select>
-              
-            </div>
+          
+            <label for="gender">Genero</label>
+            <select
+              name="gender"
+              id="gender"
+              class=""
+              onChange={this.changeGender}
+            >
+              <option value="" disabled selected>
+                selecione
+              </option>
+              <option value="male">Masculino</option>
+              <option value="female">Feminino</option>
+            </select>
+          
 
-            <MetricForm
-              weightChange={this.changeWeight}
-              ageChange={this.changeAge}
-              heightChange={this.changeHeight}
-            />
+          <MetricForm
+            weightChange={this.changeWeight}
+            ageChange={this.changeAge}
+            heightChange={this.changeHeight}
+          />
 
-            <ActivityLevel onChange={this.changeActivity} />
+          <ActivityLevel onChange={this.changeActivity} />
 
-            <button
+          <div className="button-form">
+            <Button
+              className="bg-blue-300"
               type="button"
-              class="btn btn-primary"
-              id="calculate-btn"
               onClick={this.getCalories}
             >
-              Calculo de calorias
-            </button>
-          </form>
+              Calculo de caloria
+            </Button>
+          </div>
         </div>
+        <Search />
         <div>{this.state.showResult && this.state.resultForm}</div>
-      </div>
+      </Form>
     );
   }
 }

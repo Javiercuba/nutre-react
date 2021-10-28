@@ -3,30 +3,28 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #d6d1f3;
-    }
+    background-color: #0d0633;
+}
 
 main {
-    padding-top: 25px;
-    color: azure;
+    color: rgb(255, 255, 255);
     height: 100%;
+    background-color: #41338f;
     text-align: center;
 }
 
 .entry-form {
     color: black;
-    background-color: azure;
+    background-color: rgb(150, 224, 107);
     width: 60%;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
     border-style: outset;
-    border-color: rgb(156, 0, 218);
+    border-color: rgb(33, 218, 0);
     min-width: 400px;
     max-width: 700px;
-    padding-top: 15px;
-    padding-bottom: 50px;
-    padding-left: 15px;
+    padding: 25px;
     margin-bottom: 10px;
 }
 
@@ -34,29 +32,8 @@ main {
     margin-right: 8px;
 }
 
-.gender-choice {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 50%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-row-gap: 10px;
-}
-
-.gender-choice select {
-    font-size: 12px;
-}
-
 label {
     padding-right: 10px;
-}
-
-.form-inputs {
-    padding-top: 10px;
-    width: 50%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-row-gap: 10px;
 }
 
 .activity-level {
@@ -86,6 +63,29 @@ label {
     display: contents;
     padding-right: 5px;
     font-size: 20px;
+}
+
+@media (min-width: 600px) {
+    .form-test {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.form-test {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.button-form {
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.search {
+    align-items: center;
+    margin-top: 10px;
+    justify-content: center;
 }
 
 small a {

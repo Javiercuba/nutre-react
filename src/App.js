@@ -3,7 +3,7 @@ import Navbar from "./components/NavBar";
 import "./App.css";
 import { EntryForm } from "./components/Form/EntryForm";
 import Chartpercent from "./components/ChartPercent";
-import  Search  from "./components/Search";
+
 
 const ParseCSV = (text) => {
   const result = {
@@ -29,12 +29,12 @@ export default function App() {
       });
   }, []);
   return (
-    <div>
+    <main>
       <Navbar />
       <EntryForm />
-      <Search />
+     
       <Chartpercent />
       <div className="App"></div>
-    </div>
+    </main>
   );
 }

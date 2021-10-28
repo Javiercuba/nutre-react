@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import _ from "lodash";
-import { Search, Grid, Header, Segment, Label } from "semantic-ui-react";
+import { Search, Label } from "semantic-ui-react";
 
 var result = [];
 
@@ -81,9 +81,7 @@ export default function SearchExampleStandard() {
   }, []);
 
   return (
-    <div style={{ width: "100%" }}>
-      <Grid>
-        <Grid.Column width={6}>
+    <div className="search">
           <Search
             loading={loading}
             onResultSelect={(e, data) =>
@@ -97,21 +95,6 @@ export default function SearchExampleStandard() {
             results={results}
             value={value}
           />
-        </Grid.Column>
-
-        <Grid.Column width={10}>
-          <Segment>
-            <Header>State</Header>
-            <pre style={{ overflowX: "auto" }}>
-              {JSON.stringify({ loading, results, value }, null, 2)}
-            </pre>
-            <Header>Options</Header>
-            <pre style={{ overflowX: "auto" }}>
-              {JSON.stringify(result, null, 2)}
-            </pre>
-          </Segment>
-        </Grid.Column>
-      </Grid>
     </div>
   );
 }
