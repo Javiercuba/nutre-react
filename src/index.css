@@ -13,17 +13,32 @@ main {
     text-align: center;
 }
 
+@media (min-width: 900px) {
+    .form-test {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .entry-form {
-    color: black;
-    background-color: rgb(150, 224, 107);
-    width: 60%;
+    margin: 30px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(24, 24, 26);
     text-align: left;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
+    border-radius: 20px;
     border-style: outset;
-    border-color: rgb(33, 218, 0);
-    min-width: 400px;
-    max-width: 700px;
+    border-color: rgb(255, 255, 255);
+    padding: 25px;
+}
+
+.entry-form p {
+    color: rgb(255, 255, 255);
+    font-size: large;
+    background-color: #218d33;
+    text-align: center;
+    justify-content: center;
+    border-radius: 20px;
+    border-style: outset;
     padding: 25px;
     margin-bottom: 10px;
 }
@@ -60,15 +75,17 @@ label {
 }
 
 .calorie-result p {
+    margin-top: 10px;
     display: contents;
     padding-right: 5px;
     font-size: 20px;
 }
 
-@media (min-width: 600px) {
-    .form-test {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.calorie-result {
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #218d33;
 }
 
 .form-test {
@@ -89,7 +106,7 @@ label {
 }
 
 small a {
-    color: azure;
+    color: rgb(249, 255, 255);
 }
 
 small a:hover {

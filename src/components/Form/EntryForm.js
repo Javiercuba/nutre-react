@@ -3,7 +3,7 @@ import { MetricForm } from "./MetricForm";
 import { ActivityLevel } from "../../helpers/ActivityLevel";
 import { Result } from "../../helpers/Result";
 import { BarChart } from "../BarChart";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Divider } from "semantic-ui-react";
 import Search from "../Search";
 
 export class EntryForm extends React.PureComponent {
@@ -178,21 +178,19 @@ export class EntryForm extends React.PureComponent {
         <div className="entry-form">
           <p>Selecione suas medidas</p>
 
-          
-            <label for="gender">Genero</label>
-            <select
-              name="gender"
-              id="gender"
-              class=""
-              onChange={this.changeGender}
-            >
-              <option value="" disabled selected>
-                selecione
-              </option>
-              <option value="male">Masculino</option>
-              <option value="female">Feminino</option>
-            </select>
-          
+          <label for="gender">Genero</label>
+          <select
+            name="gender"
+            id="gender"
+            class=""
+            onChange={this.changeGender}
+          >
+            <option value="" disabled selected>
+              selecione
+            </option>
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+          </select>
 
           <MetricForm
             weightChange={this.changeWeight}
@@ -211,9 +209,9 @@ export class EntryForm extends React.PureComponent {
               Calculo de caloria
             </Button>
           </div>
+          <div>{this.state.showResult && this.state.resultForm}</div>
         </div>
         <Search />
-        <div>{this.state.showResult && this.state.resultForm}</div>
       </Form>
     );
   }

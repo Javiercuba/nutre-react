@@ -26,9 +26,10 @@ export class MetricForm extends Component {
   handleChange = (e, { value }) => this.setState({ value });
   render() {
     return (
-      <Form>
+      <Form inverted>
         <Form.Group widths="equal">
           <Form.Input
+            
             fluid
             label="Peso"
             type="number"
