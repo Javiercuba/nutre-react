@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import _ from "lodash";
 import { Search, Label, Table, Grid, Header, Segment } from "semantic-ui-react";
 
@@ -33,11 +33,10 @@ function exampleReducer(state, action) {
     case "START_SEARCH":
       return { ...state, loading: true, value: action.query };
     case "FINISH_SEARCH":
-      
       return { ...state, loading: false, results: action.results };
     case "UPDATE_SELECTION":
       consumido.push(action.selection);
-      
+
       return { ...state, value: action.selection.Nome };
 
     default:
@@ -45,14 +44,12 @@ function exampleReducer(state, action) {
   }
 }
 
-
 const resultRenderer = ({ Nome }) => <Label content={Nome} />;
-
 
 export default function SearchExampleStandard() {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState);
   const { loading, results, value } = state;
- 
+
   useEffect(() => {
     fetch("./nutrientes.csv")
       .then((r) => r.text())
@@ -60,7 +57,9 @@ export default function SearchExampleStandard() {
         ParseCSV(text);
       });
   }, []);
-  
+
+  console.log(consumido);
+
   const timeoutRef = React.useRef();
 
   const handleSearchChange = React.useCallback((e, data) => {
@@ -114,21 +113,19 @@ export default function SearchExampleStandard() {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Nome</Table.HeaderCell>
-            <Table.HeaderCell>Medida caseira</Table.HeaderCell>
+            <Table.HeaderCell>Proteina</Table.HeaderCell>
+            <Table.HeaderCell>Unidade</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>banana</Table.Cell>
-            <Table.Cell>unidade</Table.Cell>
-          </Table.Row>
-
-          <Table.Row>
-            <Table.Cell>Jamie</Table.Cell>
-            <Table.Cell>Approved</Table.Cell>
-          </Table.Row>
-        </Table.Body>
+        {consumido.map((item) => (
+          <Table.Body key={item.Nome}>
+            <Table.Row>
+              <Table.Cell>{item.Nome}</Table.Cell>
+              <Table.Cell>{item.Proteina}</Table.Cell>
+              <Table.Cell>{item.Unidade}</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        ))}
       </Table>
     </div>
   );
