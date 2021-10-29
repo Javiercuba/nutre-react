@@ -91,8 +91,8 @@ export default function SearchExampleStandard() {
 
   return (
     <div className="form-search">
+      Selecione os itens da sua refeição
       <Grid>
-        Selecione os itens da sua refeição
         <Search
           className="search-input"
           loading={loading}
@@ -115,6 +115,7 @@ export default function SearchExampleStandard() {
             <Table.HeaderCell>Nome</Table.HeaderCell>
             <Table.HeaderCell>Proteina</Table.HeaderCell>
             <Table.HeaderCell>Unidade</Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         {consumido.map((item) => (
@@ -123,6 +124,7 @@ export default function SearchExampleStandard() {
               <Table.Cell>{item.Nome}</Table.Cell>
               <Table.Cell>{item.Proteina}</Table.Cell>
               <Table.Cell>{item.Unidade}</Table.Cell>
+              <Table.Cell>Exluir</Table.Cell>
             </Table.Row>
           </Table.Body>
         ))}
