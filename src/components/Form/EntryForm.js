@@ -212,6 +212,7 @@ export class EntryForm extends React.PureComponent {
           <div>{this.state.showResult && this.state.resultForm}</div>
         </div>
         <Search />
+       
       </Form>
     );
   }

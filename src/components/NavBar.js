@@ -25,12 +25,6 @@ function myFunction() {
         <a href="#home" class="active">
           Nossos alimentos
         </a>
-        <a href="#news">Sobre</a>
-        <a href="#contact">Contato</a>
-        <a href="#about"></a>
-        <a href="" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
       </div>
     </div>
   );

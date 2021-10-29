@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import _ from "lodash";
 import { Search, Label, Table, Grid, Header, Segment } from "semantic-ui-react";
 
@@ -42,10 +42,10 @@ function exampleReducer(state, action) {
 }
 
 const resultRenderer = ({ Nome }) => <Label content={Nome} />;
-console.log(result);
 
 
 export default function SearchExampleStandard() {
+  
   const [state, dispatch] = React.useReducer(exampleReducer, initialState);
   const { loading, results, value } = state;
 
@@ -61,6 +61,7 @@ export default function SearchExampleStandard() {
   const timeoutRef = React.useRef();
 
   const handleSearchChange = React.useCallback((e, data) => {
+    console.log(data);
     clearTimeout(timeoutRef.current);
     dispatch({ type: "START_SEARCH", query: data.value });
 
@@ -77,6 +78,7 @@ export default function SearchExampleStandard() {
         type: "FINISH_SEARCH",
         results: _.filter(result, isMatch),
       });
+      console.log(_.filter(result, isMatch));
     }, 300);
   }, []);
 
@@ -89,9 +91,11 @@ export default function SearchExampleStandard() {
 
   return (
     <div className="form-search">
-      Itens da sua refeição
-      <div className="search-input">
+      <Grid>
+        Selecione os itens da sua refeição
         <Search
+          
+          className="search-input"
           loading={loading}
           onResultSelect={(e, data) =>
             dispatch({
@@ -99,12 +103,13 @@ export default function SearchExampleStandard() {
               selection: data.result.Nome,
             })
           }
+          Label="teste"
           onSearchChange={handleSearchChange}
           resultRenderer={resultRenderer}
           results={results}
           value={value}
         />
-      </div>
+      </Grid>
       <Table fixed>
         <Table.Header>
           <Table.Row>
