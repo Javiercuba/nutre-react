@@ -1,24 +1,9 @@
 import React, { useState } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
 
-const NavBar = (props) => {
-  const [collapsed, setCollapsed] = useState(true);
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  }
-}
+const NavBar = () => {
+
+
   return (
     <div>
       <div class="topnav" id="myTopnav">

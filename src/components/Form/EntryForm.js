@@ -202,17 +202,18 @@ export class EntryForm extends React.PureComponent {
 
           <div className="button-form">
             <Button
-              className="bg-blue-300"
-              type="button"
+              positive
+              animated="vertical"
+              
               onClick={this.getCalories}
             >
-              Calculo de caloria
+              <Button.Content hidden>Ok!</Button.Content>
+              <Button.Content visible>Calcular calorias</Button.Content>
             </Button>
           </div>
           <div>{this.state.showResult && this.state.resultForm}</div>
         </div>
         <Search />
-       
       </Form>
     );
   }

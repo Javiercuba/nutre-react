@@ -2,7 +2,8 @@ import React, { useEffect,useState } from "react";
 import _ from "lodash";
 import { Search, Label, Table, Grid, Header, Segment } from "semantic-ui-react";
 
-var result = [];
+var nutrient = [];
+var consumido = [];
 var teste = [];
 const ParseCSV = (csv) => {
   const lines = csv.split("\n");
@@ -14,9 +15,9 @@ const ParseCSV = (csv) => {
     for (var j = 0; j < headers.length; j++) {
       obj[headers[j]] = currentline[j];
     }
-    result.push(obj);
+    nutrient.push(obj);
   }
-  return JSON.stringify(result);
+  return JSON.stringify(nutrient);
 };
 
 const initialState = {
@@ -32,23 +33,26 @@ function exampleReducer(state, action) {
     case "START_SEARCH":
       return { ...state, loading: true, value: action.query };
     case "FINISH_SEARCH":
+      
       return { ...state, loading: false, results: action.results };
     case "UPDATE_SELECTION":
-      return { ...state, value: action.selection };
+      consumido.push(action.selection);
+      
+      return { ...state, value: action.selection.Nome };
 
     default:
       throw new Error();
   }
 }
 
+
 const resultRenderer = ({ Nome }) => <Label content={Nome} />;
 
 
 export default function SearchExampleStandard() {
-  
   const [state, dispatch] = React.useReducer(exampleReducer, initialState);
   const { loading, results, value } = state;
-
+ 
   useEffect(() => {
     fetch("./nutrientes.csv")
       .then((r) => r.text())
@@ -56,12 +60,10 @@ export default function SearchExampleStandard() {
         ParseCSV(text);
       });
   }, []);
-
   
   const timeoutRef = React.useRef();
 
   const handleSearchChange = React.useCallback((e, data) => {
-    console.log(data);
     clearTimeout(timeoutRef.current);
     dispatch({ type: "START_SEARCH", query: data.value });
 
@@ -73,12 +75,12 @@ export default function SearchExampleStandard() {
 
       const re = new RegExp(_.escapeRegExp(data.value), "i");
       const isMatch = (result) => re.test(result.Nome);
-      
+
       dispatch({
         type: "FINISH_SEARCH",
-        results: _.filter(result, isMatch),
+        results: _.filter(nutrient, isMatch),
       });
-      console.log(_.filter(result, isMatch));
+      //console.log(_.filter(nutrient, isMatch));
     }, 300);
   }, []);
 
@@ -88,22 +90,20 @@ export default function SearchExampleStandard() {
     };
   }, []);
 
-
   return (
     <div className="form-search">
       <Grid>
         Selecione os itens da sua refeição
         <Search
-          
           className="search-input"
           loading={loading}
           onResultSelect={(e, data) =>
             dispatch({
               type: "UPDATE_SELECTION",
-              selection: data.result.Nome,
+              selection: data.result,
             })
           }
-          Label="teste"
+          placeholder="Busque um alimento..."
           onSearchChange={handleSearchChange}
           resultRenderer={resultRenderer}
           results={results}
