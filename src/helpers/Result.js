@@ -9,10 +9,13 @@ export class Result extends React.Component {
 
   render() {
     return (
-      <div class="calorie-result">
-        <p>Valor energetico: {this.props.calories} kcal</p>
-        <br></br>
-        <p>IMC: {this.props.imc} </p>
+      <div>
+        <div class="calorie-result">
+          <p>Valor energetico: {this.props.calories} kcal</p>
+          <br></br>
+          <p>IMC: {this.props.imc} </p>
+
+        </div>
       </div>
     );
   }

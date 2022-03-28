@@ -4,7 +4,6 @@ import { ActivityLevel } from "../../helpers/ActivityLevel";
 import { Result } from "../../helpers/Result";
 import { BarChart } from "../BarChart";
 import { Form, Button, Divider } from "semantic-ui-react";
-import Search from "../Search";
 
 export class EntryForm extends React.PureComponent {
   constructor(props) {
@@ -204,7 +203,6 @@ export class EntryForm extends React.PureComponent {
             <Button
               positive
               animated="vertical"
-              
               onClick={this.getCalories}
             >
               <Button.Content hidden>Ok!</Button.Content>
@@ -213,7 +211,7 @@ export class EntryForm extends React.PureComponent {
           </div>
           <div>{this.state.showResult && this.state.resultForm}</div>
         </div>
-        <Search />
+        
       </Form>
     );
   }

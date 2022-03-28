@@ -22,7 +22,9 @@ export class BarChart extends React.Component {
     return (
       <div>
         <Bar
+          
           data={{
+            
             labels: ["Proteina", "Energia", "Carboidrato", "Agua"],
             datasets: [
               {
@@ -62,7 +64,7 @@ export class BarChart extends React.Component {
             ],
           }}
           height={400}
-          width={600}
+          width={400}
           options={{
             maintainAspectRatio: false,
           }}

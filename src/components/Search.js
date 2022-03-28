@@ -4,7 +4,7 @@ import { Search, Label, Table, Grid, Header, Segment } from "semantic-ui-react";
 
 var nutrient = [];
 var consumido = [];
-var teste = [];
+
 const ParseCSV = (csv) => {
   const lines = csv.split("\n");
   var headers = lines[0].split(",");
@@ -47,6 +47,9 @@ function exampleReducer(state, action) {
 const resultRenderer = ({ Nome }) => <Label content={Nome} />;
 
 export default function SearchExampleStandard() {
+  constructor();
+
+  //const { nutrientes } = this.nutrientes;
   const [state, dispatch] = React.useReducer(exampleReducer, initialState);
   const { loading, results, value } = state;
 
@@ -58,7 +61,7 @@ export default function SearchExampleStandard() {
       });
   }, []);
 
-  console.log(consumido);
+  //console.log(nutrientes);
 
   const timeoutRef = React.useRef();
 
