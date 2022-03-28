@@ -6,6 +6,7 @@ import NewChart from "./components/NewChart";
 import parseCSV from "./helpers/parsecsv";
 import _ from "lodash";
 import Search from "../src/components/Search";
+import SearchComponent from "./components/SearchComponent";
 
 export default function App() {
   const [nutrientes, setNutrientes] = useState([]);
@@ -43,7 +44,12 @@ export default function App() {
         selecionarNutriente={selecionarNutriente}
       />
       <EntryForm />
+
       <NewChart nutrientesSelecionados={nutrientesSelecionados} />
+      <SearchComponent
+        nutrientes={nutrientes}
+        selecionarNutriente={selecionarNutriente}
+      />
       <div className="App"></div>
     </main>
   );

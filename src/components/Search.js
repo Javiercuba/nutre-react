@@ -45,11 +45,14 @@ function exampleReducer(state, action) {
 }
 
 const resultRenderer = ({ Nome }) => <Label content={Nome} />;
+//const { um, dois } = this.props;
+//console.log(um);
 
-export default function SearchExampleStandard() {
-  constructor();
+export default function SearchExampleStandard(props) {
 
-  //const { nutrientes } = this.nutrientes;
+  //console.log(props.nutrientes);
+
+
   const [state, dispatch] = React.useReducer(exampleReducer, initialState);
   const { loading, results, value } = state;
 
@@ -61,7 +64,6 @@ export default function SearchExampleStandard() {
       });
   }, []);
 
-  //console.log(nutrientes);
 
   const timeoutRef = React.useRef();
 
@@ -77,6 +79,7 @@ export default function SearchExampleStandard() {
 
       const re = new RegExp(_.escapeRegExp(data.value), "i");
       const isMatch = (result) => re.test(result.Nome);
+      console.log(isMatch);
 
       dispatch({
         type: "FINISH_SEARCH",
