@@ -6,7 +6,7 @@ import NewChart from "./components/NewChart";
 import parseCSV from "./helpers/parsecsv";
 import _ from "lodash";
 import Search from "../src/components/Search";
-import SearchComponent from "./components/SearchComponent";
+import { GetNutrientes } from "../src/components/Search";
 
 export default function App() {
   const [nutrientes, setNutrientes] = useState([]);
@@ -24,7 +24,7 @@ export default function App() {
   //Sera executado sempre que nutrientes for atualizado e
   //quando a aplicacao rodar pela primeira vey
   useEffect(() => {
-    setNutrientesSelecionados([nutrientes[0], nutrientes[1]]);
+    setNutrientesSelecionados([nutrientes[1]]);
   }, [nutrientes]);
 
   //console.log(nutrientes);
@@ -39,17 +39,14 @@ export default function App() {
   return (
     <main>
       <Navbar />
+
+      <EntryForm />
       <Search
         nutrientes={nutrientes}
         selecionarNutriente={selecionarNutriente}
       />
-      <EntryForm />
-
       <NewChart nutrientesSelecionados={nutrientesSelecionados} />
-      <SearchComponent
-        nutrientes={nutrientes}
-        selecionarNutriente={selecionarNutriente}
-      />
+     
       <div className="App"></div>
     </main>
   );
