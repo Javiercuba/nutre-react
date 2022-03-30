@@ -6,11 +6,22 @@ import Autocomplete from "@mui/material/Autocomplete";
 export class Search extends Component {
   render() {
     const Nutrientes = this.props.nutrientes;
+    const selecionarNutrientes = this.props.selecionarNutriente;
+
+    //console.log(Nutrientes);
+
     const handleInput = (event, value) => {
-      console.log(value);
+      Nutrientes.map((element) => {
+        if (value.values().next().value === element.Nome) {
+          selecionarNutrientes(element);
+          console.log("igual");
+        }
+        //console.log(element.Nome);
+        //console.log(value.values().next().value);
+      });
+      console.log(event);
     };
 
-    //console.log(Nutrientes[1]);
     return (
       <Stack spacing={2} sx={{ width: 300 }}>
         <Autocomplete

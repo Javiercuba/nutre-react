@@ -6,7 +6,6 @@ import NewChart from "./components/NewChart";
 import parseCSV from "./helpers/parsecsv";
 import _ from "lodash";
 import Search from "../src/components/Search";
-import { GetNutrientes } from "../src/components/Search";
 
 export default function App() {
   const [nutrientes, setNutrientes] = useState([]);
@@ -42,6 +41,7 @@ export default function App() {
 
       <EntryForm />
       <Search
+        setNutrientes
         nutrientes={nutrientes}
         selecionarNutriente={selecionarNutriente}
       />
