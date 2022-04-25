@@ -190,7 +190,6 @@ export class EntryForm extends React.PureComponent {
             <option value="male">Masculino</option>
             <option value="female">Feminino</option>
           </select>
-
           <MetricForm
             weightChange={this.changeWeight}
             ageChange={this.changeAge}
