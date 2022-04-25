@@ -91,3 +91,12 @@
         text-align: left;
     }
 }
+
+.search{
+ background-color: #ffffff; 
+ width: 70%;
+ padding: 30px; 
+ border-radius: 10px;
+ margin: 25px 50px 75px 100px;;
+
+}
