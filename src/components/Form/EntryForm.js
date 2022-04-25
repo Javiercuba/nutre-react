@@ -196,7 +196,6 @@ export class EntryForm extends React.PureComponent {
             ageChange={this.changeAge}
             heightChange={this.changeHeight}
           />
-
           <ActivityLevel onChange={this.changeActivity} />
 
           <div className="button-form">
