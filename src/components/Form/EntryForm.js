@@ -175,7 +175,7 @@ export class EntryForm extends React.PureComponent {
     return (
       <Form className="form-test">
         <div className="entry-form">
-          <p>Selecione suas medidas</p>
+          <p>Preencha com seus dados</p>
 
           <label for="gender">Genero</label>
           <select
@@ -206,7 +206,7 @@ export class EntryForm extends React.PureComponent {
               onClick={this.getCalories}
             >
               <Button.Content hidden>Ok!</Button.Content>
-              <Button.Content visible>Calcular calorias</Button.Content>
+              <Button.Content visible>Calcular necessidade energética</Button.Content>
             </Button>
           </div>
           <div>{this.state.showResult && this.state.resultForm}</div>

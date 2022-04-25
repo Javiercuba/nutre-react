@@ -1,27 +1,33 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 
-const categorias = ["Proteina", "Energia", "Carboidrato", "Gord saturada"];
+const categorias = [
+  "Açucares",
+  "Proteina",
+  "Energia",
+  "Carboidrato",
+  "Gord Total",
+];
 
 /**
  *
  * @param {Array} vetorDeAlimetos
  */
 const transformarValores = (vetorDeAlimetos) => {
-  let valoresTransformados = [0, 0, 0, 0];
+  let valoresTransformados = [0, 0, 0, 0, 0];
   const tmp = vetorDeAlimetos.filter((e) => !!e);
   tmp.forEach((alimento) => {
     valoresTransformados[0] += parseFloat(alimento[categorias[0]]);
     valoresTransformados[1] += parseFloat(alimento[categorias[1]]);
     valoresTransformados[2] += parseFloat(alimento[categorias[2]]);
     valoresTransformados[3] += parseFloat(alimento[categorias[3]]);
+    valoresTransformados[4] += parseFloat(alimento[categorias[4]]);
   });
   return [
     {
       data: valoresTransformados,
     },
   ];
-  //[30, 40, 45, 50, 140];
 };
 
 class NewChar extends Component {
@@ -31,32 +37,78 @@ class NewChar extends Component {
     this.state = {
       options: {
         chart: {
-          width: "100%",
+          width: "70%",
           id: "responsive-chart",
-          height: 380,
+          height: "auto%",
           type: "bar",
+          background: "#41338f",
+          animations: {
+            enabled: true,
+            easing: "easeinout",
+            speed: 800,
+            animateGradually: {
+              enabled: true,
+              delay: 150,
+            },
+            dynamicAnimation: {
+              enabled: true,
+              speed: 350,
+            },
+          },
         },
         plotOptions: {
           bar: {
             horizontal: true,
           },
         },
-
+        theme: {
+          mode: "dark",
+          palette: "palette1",
+          monochrome: {
+            enabled: true,
+            color: "#255aee",
+            shadeTo: "light",
+            shadeIntensity: 0.65,
+          },
+        },
         xaxis: {
           categories: categorias,
         },
 
-        dataLabels: {
-          enabled: false,
+        yaxis: {
+          show: true,
+          showAlways: true,
+          showForNullSeries: true,
+          labels: {
+            show: true,
+            align: "right",
+            style: {
+              colors: [],
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-label",
+            },
+            formatter: (value) => {
+              return value;
+            },
+          },
+        },
 
-          formatter: function (val) {
-            return val + "%";
+        dataLabels: {
+          enabled: true,
+
+          formatter: function (energia) {
+            return ((energia / 2000) * 100).toFixed(1) + "%";
+            //return energia.toFixed(1);
           },
         },
         stroke: {
           width: 1,
-          colors: ["#fff"],
+          colors: ["#000"],
+          strokeColor: "#775DD0",
         },
+
         responsive: [
           {
             breakpoint: 1000,
@@ -75,7 +127,7 @@ class NewChar extends Component {
       },
       series: [
         {
-          data: [30, 40, 45, 50, 140],
+          data: [],
         },
       ],
     };

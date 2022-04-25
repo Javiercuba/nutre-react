@@ -23,16 +23,13 @@ export default function App() {
   //Sera executado sempre que nutrientes for atualizado e
   //quando a aplicacao rodar pela primeira vey
   useEffect(() => {
-    setNutrientesSelecionados([nutrientes[1]]);
+    setNutrientesSelecionados([]);
   }, [nutrientes]);
 
   //console.log(nutrientes);
 
   const selecionarNutriente = (nutrienteSelecionado) => {
-    setNutrientesSelecionados((oldState) => [
-      ...oldState,
-      nutrienteSelecionado,
-    ]);
+    setNutrientesSelecionados(nutrienteSelecionado);
   };
 
   return (
@@ -41,12 +38,11 @@ export default function App() {
 
       <EntryForm />
       <Search
-        setNutrientes
         nutrientes={nutrientes}
         selecionarNutriente={selecionarNutriente}
       />
       <NewChart nutrientesSelecionados={nutrientesSelecionados} />
-     
+
       <div className="App"></div>
     </main>
   );
