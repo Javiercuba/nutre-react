@@ -9,8 +9,8 @@ const categorias = ["Proteina", "Energia", "Carboidrato", "Gord saturada"];
  */
 const transformarValores = (vetorDeAlimetos) => {
   let valoresTransformados = [0, 0, 0, 0];
-  vetorDeAlimetos = vetorDeAlimetos.filter((e) => !!e);
-  vetorDeAlimetos.forEach((alimento) => {
+  const tmp = vetorDeAlimetos.filter((e) => !!e);
+  tmp.forEach((alimento) => {
     valoresTransformados[0] += parseFloat(alimento[categorias[0]]);
     valoresTransformados[1] += parseFloat(alimento[categorias[1]]);
     valoresTransformados[2] += parseFloat(alimento[categorias[2]]);
@@ -55,7 +55,7 @@ class NewChar extends Component {
         },
         stroke: {
           width: 1,
-          colors: ["#ff44ff"],
+          colors: ["#fff"],
         },
         responsive: [
           {
@@ -83,6 +83,7 @@ class NewChar extends Component {
 
   render() {
     const { nutrientesSelecionados } = this.props;
+    console.log(nutrientesSelecionados);
     return (
       <div className="app">
         <div className="row">
