@@ -79,6 +79,13 @@ label {
 #calculate-btn:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+.inicial{
+  align-items: center;
+  justify-content: center;
+  display: grid;    
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;     
+}
 
 .calorie-result p {
     margin-top: 10px;
@@ -182,6 +189,8 @@ table th {
   text-transform: uppercase;
 }
 
+
+
 @media screen and (max-width: 600px) {
   table {
     border: 0;
@@ -191,6 +200,10 @@ table th {
     font-size: 1.3em;
     
   }
+  .inicial{
+   display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
   
   table thead {
     border: none;

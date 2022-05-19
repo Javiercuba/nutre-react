@@ -36,13 +36,14 @@ export default function App() {
   return (
     <main>
       <Navbar />
+      <div className="inicial">
+        <EntryForm />
+        <Search
+          nutrientes={nutrientes}
+          selecionarNutriente={selecionarNutriente}
+        />
+      </div>
 
-      <EntryForm />
-      <Search
-        nutrientes={nutrientes}
-        selecionarNutriente={selecionarNutriente}
-      />
-     
       <NewChart nutrientesSelecionados={nutrientesSelecionados} />
 
       <div className="App"></div>

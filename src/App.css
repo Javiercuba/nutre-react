@@ -73,16 +73,13 @@
 }
 
 @media screen and (max-width: 600px) {
-    .topnav a:not(:first-child) {
+     .topnav a:not(:first-child) {
         display: none;
     }
     .topnav a.icon {
         float: right;
         display: block;
     }
-}
-
-@media screen and (max-width: 600px) {
     .topnav.responsive {
         position: relative;
     }
@@ -96,18 +93,18 @@
         display: block;
         text-align: left;
     }
+   
 }
 
 .box{
  background-color: #fefbfb; 
  padding: 10px; 
- width: 70%;
- 
  border-radius: 10px;
+ 
  
 }
 .Scrool{
-    max-height: 200px; overflow: scroll;
+    max-height: 250px; overflow: scroll;
 }
 
 .chart{
@@ -117,5 +114,5 @@
 .search{
     background-color: #ffffff;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 20px;
 }
