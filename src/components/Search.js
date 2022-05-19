@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
-import TableRow from "@mui/material/TableRow";
 
 export class Search extends Component {
   render() {
