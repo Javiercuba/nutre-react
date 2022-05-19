@@ -7,6 +7,7 @@ const categorias = [
   "Energia",
   "Carboidrato",
   "Gord Total",
+  "Fibras"
 ];
 
 /**
@@ -14,7 +15,7 @@ const categorias = [
  * @param {Array} vetorDeAlimetos
  */
 const transformarValores = (vetorDeAlimetos) => {
-  let valoresTransformados = [0, 0, 0, 0, 0];
+  let valoresTransformados = [0, 0, 0, 0, 0,0];
   const tmp = vetorDeAlimetos.filter((e) => !!e);
   tmp.forEach((alimento) => {
     valoresTransformados[0] += parseFloat(alimento[categorias[0]]);
@@ -22,6 +23,7 @@ const transformarValores = (vetorDeAlimetos) => {
     valoresTransformados[2] += parseFloat(alimento[categorias[2]]);
     valoresTransformados[3] += parseFloat(alimento[categorias[3]]);
     valoresTransformados[4] += parseFloat(alimento[categorias[4]]);
+    valoresTransformados[5] += parseFloat(alimento[categorias[5]]);
   });
   return [
     {
@@ -135,18 +137,22 @@ class NewChar extends Component {
 
   render() {
     const { nutrientesSelecionados } = this.props;
-    console.log(nutrientesSelecionados);
+  
     return (
       <div className="app">
-        <div className="row">
-          <div className="responsive-chart">
-            <Chart
-              options={this.state.options}
-              series={transformarValores(nutrientesSelecionados)}
-              type="bar"
-              width="100%"
-            />
-          </div>
+        <div className="chart">
+          <Chart
+            options={this.state.options}
+            series={transformarValores(nutrientesSelecionados)}
+            type="bar"
+            width="100%"
+          />
+          <Chart
+            options={this.state.options}
+            series={transformarValores(nutrientesSelecionados)}
+            type="bar"
+            width="100%"
+          />
         </div>
       </div>
     );

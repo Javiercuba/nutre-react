@@ -1,5 +1,4 @@
 import React from "react";
-import { BarChart } from "../components/BarChart";
 
 export class Result extends React.Component {
   constructor(props) {
