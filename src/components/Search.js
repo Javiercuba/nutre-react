@@ -23,38 +23,41 @@ export class Search extends Component {
 
     console.log(Nutrientes);
     return (
-      <div className="search">
-        <Stack spacing={1} sx={{ width: 180 }}>
-          <Autocomplete
-            onChange={handleInput}
-            id="free-solo-demo"
-            fullWidth
-            multiple
-            options={Nutrientes.map((option) => option.Nome)}
-            renderInput={(params) => (
-              <TextField {...params} label="Escolha um alimento" />
-            )}
-          />
-        </Stack>
-        <table>
-          <caption>Statement Summary</caption>
-          <thead>
-            <tr>
-              <th scope="col">Alimento</th>
-              <th scope="col">Quantidade</th>
-              <th scope="col">Unidade</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Nutrientes.map((row) => (
+      <div className="box">
+        <div className="search">
+            <Autocomplete
+              onChange={handleInput}
+              id="free-solo-demo"
+              fullWidth
+              multiple
+              options={Nutrientes.map((option) => option.Nome)}
+              renderInput={(params) => (
+                <TextField {...params} label="Escolha um alimento" />
+              )}
+            />
+          
+        </div>
+        <div id="example" className="Scrool">
+          <table>
+            <caption>Nutrientes Selecionados</caption>
+            <thead>
               <tr>
-                <td data-label="Alimento">{row.Nome}</td>
-                <td data-label="Quantidade">{row.GordTotal}</td>
-                <td data-label="Unidade">{row.Unidade}</td>
+                <th scope="col">Alimento</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Unidade</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {Nutrientes.map((row) => (
+                <tr>
+                  <td data-label="Alimento">{row.Nome}</td>
+                  <td data-label="Quantidade">{row.GordTotal}</td>
+                  <td data-label="Unidade">{row.Unidade}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

@@ -147,12 +147,6 @@ class NewChar extends Component {
             type="bar"
             width="100%"
           />
-          <Chart
-            options={this.state.options}
-            series={transformarValores(nutrientesSelecionados)}
-            type="bar"
-            width="100%"
-          />
         </div>
       </div>
     );

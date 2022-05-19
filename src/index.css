@@ -157,6 +157,7 @@ table {
 table caption {
   font-size: 1.5em;
   margin: .5em 0 .75em;
+  color: #000000;
 }
 
 table tr {
@@ -188,6 +189,7 @@ table th {
 
   table caption {
     font-size: 1.3em;
+    
   }
   
   table thead {
