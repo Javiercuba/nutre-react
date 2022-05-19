@@ -1,4 +1,4 @@
-Nome,Medida caseira,Quant X unidade,Unidade,Energia,Carboidrato,Açucares,Proteina,Gord Total,Gord saturada,Fibras,Sódio,Vitamina C,Cálcio,Ferro,Potássio,Niacina
+Nome,Medida caseira,QuantXunidade,Unidade,Energia,Carboidrato,Açucares,Proteina,GordTotal,GordSaturada,Fibras,Sódio,VitaminaC,Cálcio,Ferro,Potássio,Niacina
 Abacate cru picado,Colher de sopa,45,gramas,96,6,0,1.2,8.4,2.3,6.3,NULL,8.7,8,0.2,206,NULL
 Abacaxi cru,Fatia média,75,gramas,48,12,11,0.9,0.1,NULL,1.0,NULL,34.6,22,0.3,131,NULL
 Filé de Abadejo assado com pouco sal,Filé médio,100,gramas,112,0,0,23.5,1.2,0.6,NULL,334,NULL,23,0.5,156,0.44

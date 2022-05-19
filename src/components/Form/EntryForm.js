@@ -2,7 +2,6 @@ import React from "react";
 import { MetricForm } from "./MetricForm";
 import { ActivityLevel } from "../../helpers/ActivityLevel";
 import { Result } from "../../helpers/Result";
-import { BarChart } from "../BarChart";
 import { Form, Button, Divider } from "semantic-ui-react";
 
 export class EntryForm extends React.PureComponent {
@@ -104,13 +103,6 @@ export class EntryForm extends React.PureComponent {
     if (this.validEntry()) {
       this.setState({
         showResult: true,
-        resultForm: (
-          <BarChart
-            //TODO mudar esse grafico
-            energy={this.calculateCalories}
-            weight={this.state.weight}
-          />
-        ),
       });
     }
   }
