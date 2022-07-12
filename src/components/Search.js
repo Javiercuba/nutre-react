@@ -1,63 +1,63 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
+import axios from "axios";
+import Read from "../db/read";
 import Autocomplete from "@mui/material/Autocomplete";
 
 export class Search extends Component {
+
   render() {
     const Nutrientes = this.props.nutrientes;
-    const selecionarNutrientes = this.props.selecionarNutriente;
-
+    const idUser = this.props.IdUser;
     /**
      *
      * @param {*} _
      * @param {Array} value
      */
-    const handleInput = (_, value) => {
-      selecionarNutrientes(
-        value.map((nutrienteSelecionado) =>
-          Nutrientes.find(({ Nome }) => Nome === nutrienteSelecionado)
-        )
-      );
-    };
+   console.log(idUser);
+    const postData = (nome) => {
+      if (nome) {
+        axios
+          .post(
+            `https://62a35d1421232ff9b21e9c6a.mockapi.io/users/${idUser}/Consumido`,
+            {
+              "Alimento": "Abacaxi"
+              //"Quantidade": "Quantidade 1",
 
-    console.log(Nutrientes);
+              
+            }
+          )
+          .then(() => {
+            console.log("Adicionado");
+          })
+          .catch(() => {
+            console.log("Erro");
+          });
+      } else {
+        console.log("Não adicionado");
+      }
+    };
+    //console.log(Nutrientes);
+
     return (
       <div className="box">
         <div className="search">
-            <Autocomplete
-              onChange={handleInput}
-              id="free-solo-demo"
-              fullWidth
-              multiple
-              options={Nutrientes.map((option) => option.Nome)}
-              renderInput={(params) => (
-                <TextField {...params} label="Escolha um alimento" />
-              )}
-            />
-          
+          <Autocomplete
+            id="free-solo-demo"
+            fullWidth
+            options={Nutrientes.map((option) => option.Nome)}
+            renderInput={(params) => (
+              <TextField {...params} label="Escolha um alimento" />
+            )}
+            onChange={(e,value) => {
+              console.log();
+              postData(value);
+             
+            }}
+          />
         </div>
-        <div id="example" className="Scrool">
-          <table>
-            <caption>Nutrientes Selecionados</caption>
-            <thead>
-              <tr>
-                <th scope="col">Alimento</th>
-                <th scope="col">Quantidade</th>
-                <th scope="col">Unidade</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Nutrientes.map((row) => (
-                <tr>
-                  <td data-label="Alimento">{row.Nome}</td>
-                  <td data-label="Quantidade">{row.GordTotal}</td>
-                  <td data-label="Unidade">{row.Unidade}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            <Read/>
+       
       </div>
     );
   }
