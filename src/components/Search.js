@@ -8,7 +8,7 @@ export class Search extends Component {
 
   render() {
     const Nutrientes = this.props.nutrientes;
-    const idUser = this.props.IdUser;
+    const idUser = this.props.id;
     /**
      *
      * @param {*} _

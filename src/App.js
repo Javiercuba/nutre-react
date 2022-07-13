@@ -17,14 +17,15 @@ export default function App() {
 
   //Salvar o id do usuario somente uma vez
   useEffect(() => {
-    console.log(id); 
-    axios
-      .post(`https://62a35d1421232ff9b21e9c6a.mockapi.io/users/`,
-        { "Userid":id } 
-    ).then(() => {
-      console.log(`Usuario criado com id ${id}`);
-      console.log(axios.get(`https://62a35d1421232ff9b21e9c6a.mockapi.io/users/2`));
-      });
+    console.log(id);
+    axios({
+      method: "post",
+      url: "https://62a35d1421232ff9b21e9c6a.mockapi.io/users",
+      data: {
+        id: 40
+       
+      },
+    });
     //setid(getid());
   }, []);
 

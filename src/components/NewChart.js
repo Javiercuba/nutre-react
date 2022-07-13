@@ -7,7 +7,7 @@ const categorias = [
   "Energia",
   "Carboidrato",
   "Gord Total",
-  "Fibras"
+  "Fibras",
 ];
 
 /**
@@ -15,7 +15,7 @@ const categorias = [
  * @param {Array} vetorDeAlimetos
  */
 const transformarValores = (vetorDeAlimetos) => {
-  let valoresTransformados = [0, 0, 0, 0, 0,0];
+  let valoresTransformados = [0, 0, 0, 0, 0, 0];
   const tmp = vetorDeAlimetos.filter((e) => !!e);
   tmp.forEach((alimento) => {
     valoresTransformados[0] += parseFloat(alimento[categorias[0]]);
@@ -137,7 +137,7 @@ class NewChar extends Component {
 
   render() {
     const { nutrientesSelecionados } = this.props;
-  
+
     return (
       <div className="app">
         <div className="chart">
