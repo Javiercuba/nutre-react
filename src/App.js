@@ -1,33 +1,38 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/NavBar";
 import "./App.css";
-import axios from "axios";
 import { EntryForm } from "./components/Form/EntryForm";
 import NewChart from "./components/NewChart";
 import parseCSV from "./helpers/parsecsv";
 import _ from "lodash";
+import { db } from "./firebase-config";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 
 import Search from "../src/components/Search";
 
 export default function App() {
   //Consumido
   const [id, setid] = useState(Math.floor(Math.random() * 100));
+  
+  //setid(2);
   const [nutrientes, setNutrientes] = useState([]);
   const [nutrientesSelecionados, setNutrientesSelecionados] = useState([]);
+  const usersCollectionRef = collection(db, "users");
 
-  //Salvar o id do usuario somente uma vez
+  const createUser = async () => {
+    await addDoc(usersCollectionRef, { id: 2, name: "Javier" });
+  };
+
+  //createUser();
   useEffect(() => {
-    console.log(id);
-    axios({
-      method: "post",
-      url: "https://62a35d1421232ff9b21e9c6a.mockapi.io/users",
-      data: {
-        id: 40
-       
-      },
-    });
-    //setid(getid());
+    const getUsers = async () => {
+      const data = await getDocs(usersCollectionRef);
+      //setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      console.log(data);
+    };
+    getUsers();
   }, []);
+
 
   //so sera executado quando o site abrir pela primeira vez
   useEffect(() => {

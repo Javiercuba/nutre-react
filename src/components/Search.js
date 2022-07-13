@@ -1,43 +1,32 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import Read from "../db/read";
 import Autocomplete from "@mui/material/Autocomplete";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { db } from "./../firebase-config";
 
-export class Search extends Component {
-
+class Search extends Component {
   render() {
     const Nutrientes = this.props.nutrientes;
-    const idUser = this.props.id;
+    const id = this.props.id;
+    //const [food, setFood] = useState("");
     /**
      *
      * @param {*} _
      * @param {Array} value
      */
-   console.log(idUser);
-    const postData = (nome) => {
-      if (nome) {
-        axios
-          .post(
-            `https://62a35d1421232ff9b21e9c6a.mockapi.io/users/${idUser}/Consumido`,
-            {
-              "Alimento": "Abacaxi"
-              //"Quantidade": "Quantidade 1",
+    //console.log(idUser);
+    const usersCollectionRef = collection(db, "foodconsumed");
 
-              
-            }
-          )
-          .then(() => {
-            console.log("Adicionado");
-          })
-          .catch(() => {
-            console.log("Erro");
-          });
-      } else {
-        console.log("Não adicionado");
-      }
+    const insertNutrientes = (value) => {
+      //const nutrientes = value.map((nutriente) => nutriente.id);
+      console.log(value);
+      addDoc(usersCollectionRef, {
+        Name: value,
+        idUser: 2,
+      });
     };
-    //console.log(Nutrientes);
 
     return (
       <div className="box">
@@ -49,15 +38,12 @@ export class Search extends Component {
             renderInput={(params) => (
               <TextField {...params} label="Escolha um alimento" />
             )}
-            onChange={(e,value) => {
-              console.log();
-              postData(value);
-             
+            onChange={(e, value) => {
+              insertNutrientes(value);
             }}
           />
         </div>
-            <Read/>
-       
+        <Read />
       </div>
     );
   }
