@@ -6,33 +6,23 @@ import NewChart from "./components/NewChart";
 import parseCSV from "./helpers/parsecsv";
 import _ from "lodash";
 import { db } from "./firebase-config";
-import { collection, getDocs, addDoc } from "firebase/firestore";
 
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { StyledEngineProvider } from "@mui/material";
 import Search from "../src/components/Search";
 
+import {
+  AppBar,
+  Box,
+  CssBaseline,
+  Toolbar,
+  useMediaQuery,
+} from "@mui/material";
+
 export default function App() {
-  //Consumido
-  const [id, setid] = useState(Math.floor(Math.random() * 100));
-  
   //setid(2);
   const [nutrientes, setNutrientes] = useState([]);
   const [nutrientesSelecionados, setNutrientesSelecionados] = useState([]);
-  const usersCollectionRef = collection(db, "users");
-
-  const createUser = async () => {
-    await addDoc(usersCollectionRef, { id: 2, name: "Javier" });
-  };
-
-  //createUser();
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      //setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      console.log(data);
-    };
-    getUsers();
-  }, []);
-
 
   //so sera executado quando o site abrir pela primeira vez
   useEffect(() => {
@@ -49,19 +39,18 @@ export default function App() {
     setNutrientesSelecionados([]);
   }, [nutrientes]);
 
-  //console.log(nutrientesSelecionados);
+  console.log(nutrientes);
 
   return (
-    <main>
+    <StyledEngineProvider injectFirst>
+      <CssBaseline />
       <Navbar />
       <div className="inicial">
         <EntryForm />
-        <Search nutrientes={nutrientes} id={id} />
+        <Search nutrientes={nutrientes} />
       </div>
 
       <NewChart nutrientesSelecionados={nutrientesSelecionados} />
-
-      <div className="App"></div>
-    </main>
+    </StyledEngineProvider>
   );
 }

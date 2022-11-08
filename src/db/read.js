@@ -2,12 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "semantic-ui-react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {
-  collection,
-  getDocs,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "./../firebase-config";
 
 export default function Read() {

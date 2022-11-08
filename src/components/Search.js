@@ -1,15 +1,13 @@
 import React, { Component, useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
-import axios from "axios";
 import Read from "../db/read";
 import Autocomplete from "@mui/material/Autocomplete";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-import { db } from "./../firebase-config";
+
 
 class Search extends Component {
   render() {
     const Nutrientes = this.props.nutrientes;
-    const id = this.props.id;
+
     //const [food, setFood] = useState("");
     /**
      *
@@ -17,16 +15,6 @@ class Search extends Component {
      * @param {Array} value
      */
     //console.log(idUser);
-    const usersCollectionRef = collection(db, "foodconsumed");
-
-    const insertNutrientes = (value) => {
-      //const nutrientes = value.map((nutriente) => nutriente.id);
-      console.log(value);
-      addDoc(usersCollectionRef, {
-        Name: value,
-        idUser: 2,
-      });
-    };
 
     return (
       <div className="box">
@@ -39,7 +27,8 @@ class Search extends Component {
               <TextField {...params} label="Escolha um alimento" />
             )}
             onChange={(e, value) => {
-              insertNutrientes(value);
+              console.log(value);
+              // modificar isso daqui pra salvar no local storage
             }}
           />
         </div>

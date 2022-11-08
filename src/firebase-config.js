@@ -1,14 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBvvjDHfMnXZFWRW_3K1TMJKIOd8LqjDqw",
-  authDomain: "banco-nutre.firebaseapp.com",
-  databaseURL: "https://banco-nutre-default-rtdb.firebaseio.com",
-  projectId: "banco-nutre",
-  storageBucket: "banco-nutre.appspot.com",
-  messagingSenderId: "253550941162",
-  appId: "1:253550941162:web:6484578d53318e75f1d893",
+  apiKey:process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
   measurementId: "G-C8R8TSQC9E",
 };
 
